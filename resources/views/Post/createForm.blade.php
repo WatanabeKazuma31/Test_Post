@@ -10,7 +10,7 @@
       @if($errors->has('newName'))
       <p class="v-msg">{{ $errors->first('newName') }}</p>
       @endif
-      <textarea name="newPost" class="form-control" placeholder="投稿内容を入力" value="{{old('newPost')}}"></textarea>
+      <textarea name="newPost" class="form-control" placeholder="投稿内容を入力">{{ old('newPost') }}</textarea>
       @if($errors->has('newPost'))
       <p class="v-msg">{{ $errors->first('newPost') }}</p>
       @endif
