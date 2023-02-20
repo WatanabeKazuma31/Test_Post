@@ -50,7 +50,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255','regex:/^[^#<>0-9０-９　]+$/u'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -73,6 +73,6 @@ class RegisterController extends Controller
 
     // 登録後のリダイレクト先
     public function redirectPath(){
-        return '/home';
+        return '/index';
     }
 }

@@ -28,11 +28,11 @@ Route::get('post',function(){
 });
 
 // 一覧表示(index)
-Route::get('/index','App\Http\Controllers\PostController@index');
+Route::get('/index','App\Http\Controllers\PostController@index')->middleware('auth');
 
 
 // 新規作成フォーム(create-form)
-Route::get('/create-form','App\Http\Controllers\PostController@createForm');
+Route::get('/create-form','App\Http\Controllers\PostController@createForm')->middleware('auth');
 
 
 // 新規作成(create)
@@ -48,8 +48,8 @@ Route::get('/post/{id}/delete','App\Http\Controllers\PostController@delete')->mi
 
 
 // 更新フォーム(update-form)
-Route::get('post/{id}/update-form','App\Http\Controllers\PostController@updateForm');
+Route::get('post/{id}/update-form','App\Http\Controllers\PostController@updateForm')->middleware('auth');
 
 
 // 更新機能(update)
-Route::post('/post/update','App\Http\Controllers\PostController@update')->middleware('auth');
+Route::post('/post/update','App\Http\Controllers\PostController@update')->middleware('auth')->middleware('auth');

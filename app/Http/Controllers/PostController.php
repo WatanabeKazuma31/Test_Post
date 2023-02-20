@@ -27,12 +27,14 @@ class PostController extends Controller
     // 新規作成(create)
     public function create(Request $request){
         $request->validate([
-            'newName' => 'required',
-            'newPost' => 'required|string|max:100'
+            'newName' => 'required|string|regex:/^[^#<>0-9０-９　]+$/u',
+            'newPost' => 'required|string|max:100|regex:/^[^#<>　^;_]/u'
         ],
         [
             'newName.required' => '※名前は入力必須です。',
+            'newName.regex' => '※名前は正しい形式で入力してください。',
             'newPost.required' => '※投稿内容は入力必須です。',
+            'newPost.regex' => '※投稿内容は正しい形式で入力してください。',
             'newPost.max' => '※投稿内容は100文字以内で入力してください。'
         ]);
 
@@ -74,12 +76,14 @@ class PostController extends Controller
     // 更新機能(update)
     public function update(Request $request){
         $request->validate([
-            'upName' => 'required',
-            'upPost' => 'required|string|max:100'
+            'upName' => 'required|string|regex:/^[^#<>0-9０-９　]+$/u',
+            'upPost' => 'required|string|max:100|regex:/^[^#<>　^;_]/u'
         ],
         [
             'upName.required' => '※名前は入力必須です。',
+            'upName.regex' => '※名前は正しい形式で入力してください。。',
             'upPost.required' => '※投稿内容は入力必須です。',
+            'upPost.regex' => '※投稿内容正しい形式で入力してください。',
             'upPost.max' => '※投稿内容は100文字以内で入力してください。'
         ]);
 
